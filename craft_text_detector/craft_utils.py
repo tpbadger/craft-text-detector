@@ -10,9 +10,9 @@ import numpy as np
 import craft_text_detector.file_utils as file_utils
 import craft_text_detector.torch_utils as torch_utils
 
-CRAFT_GDRIVE_URL = "https://drive.google.com/uc?id=1bupFXqT-VU6Jjeul13XP7yx2Sg5IHr4J"
+CRAFT_GDRIVE_URL = "https://drive.google.com/file/d/1Jk4eGD7crsqCCg9C9VjCLkMN3ze8kutZ"
 REFINENET_GDRIVE_URL = (
-    "https://drive.google.com/uc?id=1xcE9qpJXp4ofINwXWVhhQIh9S8Z7cuGj"
+    "https://drive.google.com/file/d/1XSaFwBkOaFOdtk4Ane3DFyJGPRw6v5bO"
 )
 
 
@@ -412,7 +412,8 @@ def getDetBoxes(textmap, linkmap, text_threshold, link_threshold, low_text, poly
 
 def adjustResultCoordinates(polys, ratio_w, ratio_h, ratio_net=2):
     if len(polys) > 0:
-        polys = np.array(polys)
+        # print(f"#### {polys.shape}")
+        polys = np.array(polys, dtype="object")
         for k in range(len(polys)):
             if polys[k] is not None:
                 polys[k] *= (ratio_w * ratio_net, ratio_h * ratio_net)
